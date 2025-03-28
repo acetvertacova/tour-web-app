@@ -13,5 +13,5 @@ public interface TourService {
 
     Tour updateTour(Tour tour, UUID tourId);
 
-    void deleteTourById(UUID tourId);
+    Tour deleteTourById(UUID tourId);
 }

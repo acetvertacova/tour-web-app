@@ -4,10 +4,11 @@ import com.tour_web_app.entity.Tour;
 import com.tour_web_app.repository.TourRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -18,7 +19,7 @@ public class TourServiceImpl implements TourService {
 
     @Override
     public Tour saveTour(Tour tour) {
-        throw new RuntimeException("Not yet implemented");
+        return tourRepository.save(tour);
     }
 
     @Override
@@ -29,12 +30,32 @@ public class TourServiceImpl implements TourService {
     }
 
     @Override
-    public Tour updateTour(Tour tour, UUID tourId) {
-        throw new RuntimeException("Not yet implemented");
+    public Tour updateTour(@RequestBody Tour tourUpdated, @PathVariable UUID tourId) {
+        Tour tourNeededUpdate = tourRepository.findById(tourId).get();
+
+        tourNeededUpdate.setCountry(tourUpdated.getCountry());
+        tourNeededUpdate.setCity(tourUpdated.getCity());
+        tourNeededUpdate.setCheckInDate(tourUpdated.getCheckInDate());
+        tourNeededUpdate.setCheckOutDate(tourUpdated.getCheckOutDate());
+        tourNeededUpdate.setFoodType(tourUpdated.getFoodType());
+        tourNeededUpdate.setPrice(tourUpdated.getPrice());
+        tourNeededUpdate.setHotel(tourUpdated.getHotel());
+        tourNeededUpdate.setStars(tourUpdated.getStars());
+        tourNeededUpdate.setDepartureThereDate(tourUpdated.getDepartureThereDate());
+        tourNeededUpdate.setDepartureBackDate(tourUpdated.getDepartureBackDate());
+
+        //todo
+        // Tour newTour= Tour.builder().checkInDate().build()
+
+        return tourRepository.save(tourNeededUpdate);
+
     }
 
     @Override
-    public void deleteTourById(UUID tourId) {
-        throw new RuntimeException("Not yet implemented");
+    public Tour deleteTourById(UUID tourId) {
+        Tour tour = tourRepository.findById(tourId).get();
+        tourRepository.deleteById(tourId);
+
+        return tour;
     }
 }

@@ -1,22 +1,22 @@
-INSERT INTO T_TOURS (ID, COUNTRY, CITY, CHECK_IN_DATE, CHECK_OUT_DATE, FOOD_TYPE, PRICE, HOTEL, STARS, DEPARTURE_THERE_DATE, DEPARTURE_BACK_DATE)
+INSERT INTO Tour (name, country, city, check_in_date, check_out_date, duration, max_capacity, available_spots, price, hotel, rating, description)
 VALUES
-(gen_random_uuid(), 'France', 'Paris', '2025-03-01', '2025-03-07', 'All Inclusive', 1200.50, 'Hotel Paris Lux', 5, '2025-02-28', '2025-03-08'),
-(gen_random_uuid(), 'Italy', 'Rome', '2025-04-10', '2025-04-17', 'Half Board', 950.00, 'Roma Elegance', 4, '2025-04-09', '2025-04-18'),
-(gen_random_uuid(), 'Spain', 'Barcelona', '2025-05-15', '2025-05-22', 'Breakfast Only', 850.75, 'Barcelona Sun', 4, '2025-05-14', '2025-05-23'),
-(gen_random_uuid(), 'Germany', 'Berlin', '2025-06-05', '2025-06-12', 'Full Board', 1100.00, 'Berlin Grand', 5, '2025-06-04', '2025-06-13'),
-(gen_random_uuid(), 'USA', 'New York', '2025-07-20', '2025-07-27', 'Breakfast Only', 2000.99, 'NYC Plaza', 5, '2025-07-19', '2025-07-28'),
-(gen_random_uuid(), 'Japan', 'Tokyo', '2025-08-01', '2025-08-08', 'Half Board', 1800.00, 'Tokyo Prime', 5, '2025-07-31', '2025-08-09'),
-(gen_random_uuid(), 'UK', 'London', '2025-09-10', '2025-09-17', 'All Inclusive', 1300.45, 'London Suites', 4, '2025-09-09', '2025-09-18'),
-(gen_random_uuid(), 'Australia', 'Sydney', '2025-10-05', '2025-10-12', 'Breakfast Only', 1900.30, 'Sydney Harbour', 5, '2025-10-04', '2025-10-13'),
-(gen_random_uuid(), 'Canada', 'Toronto', '2025-11-15', '2025-11-22', 'Full Board', 1400.25, 'Toronto Skyline', 4, '2025-11-14', '2025-11-23'),
-(gen_random_uuid(), 'Brazil', 'Rio de Janeiro', '2025-12-10', '2025-12-17', 'Half Board', 1250.99, 'Rio Beachfront', 4, '2025-12-09', '2025-12-18'),
-(gen_random_uuid(), 'Greece', 'Athens', '2025-06-15', '2025-06-22', 'All Inclusive', 1000.50, 'Athens Grand', 5, '2025-06-14', '2025-06-23'),
-(gen_random_uuid(), 'Netherlands', 'Amsterdam', '2025-07-05', '2025-07-12', 'Breakfast Only', 950.75, 'Amsterdam Royal', 4, '2025-07-04', '2025-07-13'),
-(gen_random_uuid(), 'Switzerland', 'Zurich', '2025-08-20', '2025-08-27', 'Full Board', 1600.00, 'Zurich Panorama', 5, '2025-08-19', '2025-08-28'),
-(gen_random_uuid(), 'Portugal', 'Lisbon', '2025-09-12', '2025-09-19', 'Half Board', 1200.30, 'Lisbon Boutique', 4, '2025-09-11', '2025-09-20'),
-(gen_random_uuid(), 'Thailand', 'Bangkok', '2025-10-01', '2025-10-08', 'All Inclusive', 1100.90, 'Bangkok Paradise', 5, '2025-09-30', '2025-10-09'),
-(gen_random_uuid(), 'UAE', 'Dubai', '2025-11-07', '2025-11-14', 'Breakfast Only', 2500.00, 'Dubai Lux', 5, '2025-11-06', '2025-11-15'),
-(gen_random_uuid(), 'Mexico', 'Cancun', '2025-12-25', '2026-01-01', 'Full Board', 1750.50, 'Cancun Resort', 4, '2025-12-24', '2026-01-02'),
-(gen_random_uuid(), 'South Korea', 'Seoul', '2025-03-14', '2025-03-21', 'Half Board', 1400.75, 'Seoul Skyline', 5, '2025-03-13', '2025-03-22'),
-(gen_random_uuid(), 'Egypt', 'Cairo', '2025-04-18', '2025-04-25', 'All Inclusive', 1050.40, 'Cairo Oasis', 4, '2025-04-17', '2025-04-26'),
-(gen_random_uuid(), 'South Africa', 'Cape Town', '2025-05-22', '2025-05-29', 'Breakfast Only', 1550.60, 'Cape Town View', 5, '2025-05-21', '2025-05-30');
+('Rome Historical Tour', 'Italy', 'Rome', '2025-06-01', '2025-06-10', 9, 20, 15, 1200.50, 'Hotel Roma', 4, 'A beautiful tour of Rome including historical sites and local cuisine.'),
+('Paris City Explorer', 'France', 'Paris', '2025-07-05', '2025-07-12', 7, 25, 20, 1500.00, 'Hotel Parisian', 5, 'Explore the beauty of Paris with a guided city tour and visits to top museums.'),
+('Barcelona Beach & Culture', 'Spain', 'Barcelona', '2025-08-10', '2025-08-17', 7, 18, 12, 1100.00, 'Catalonia Hotel', 4, 'Enjoy sunny beaches, Gaudí architecture, and delicious tapas.'),
+('Tokyo Experience', 'Japan', 'Tokyo', '2025-09-15', '2025-09-25', 10, 15, 8, 2200.00, 'Tokyo Garden Hotel', 5, 'Experience Tokyo modern life, ancient temples, and sushi tours.'),
+('New York Adventure', 'USA', 'New York', '2025-10-01', '2025-10-07', 6, 30, 25, 1800.00, 'Manhattan Stay', 4, 'Visit the Statue of Liberty, Times Square, and enjoy Broadway shows.'),
+('Athens Ancient Wonders', 'Greece', 'Athens', '2025-05-20', '2025-05-28', 8, 22, 18, 950.00, 'Acropolis View Hotel', 3, 'Walk through ancient ruins and enjoy Mediterranean food.'),
+('Berlin History Tour', 'Germany', 'Berlin', '2025-11-10', '2025-11-17', 7, 20, 16, 1300.00, 'Hotel Brandenburg', 4, 'Explore historical landmarks and experience Berlin vibrant culture.'),
+('Bangkok Street Food Adventure', 'Thailand', 'Bangkok', '2025-12-01', '2025-12-10', 9, 16, 10, 1000.00, 'River Palace Hotel', 4, 'Enjoy floating markets, temples, and Thai street food.'),
+('Rio Beach Paradise', 'Brazil', 'Rio de Janeiro', '2026-01-15', '2026-01-22', 7, 24, 20, 1600.00, 'Copacabana Inn', 4, 'Relax on world-famous beaches and visit Christ the Redeemer.'),
+('Sydney Harbor Experience', 'Australia', 'Sydney', '2026-02-10', '2026-02-18', 8, 12, 5, 2500.00, 'Harbour View Hotel', 5, 'See the Opera House, Bondi Beach, and go on a harbor cruise.');
+
+UPDATE Tour SET activities = ARRAY['sightseeing', 'cultural tours', 'food tours'] WHERE id = 1;
+UPDATE Tour SET activities = ARRAY['museums', 'city tours', 'shopping'] WHERE id = 2;
+UPDATE Tour SET activities = ARRAY['beach', 'architecture', 'nightlife'] WHERE id = 3;
+UPDATE Tour SET activities = ARRAY['temples', 'sushi tours', 'shopping'] WHERE id = 4;
+UPDATE Tour SET activities = ARRAY['landmarks', 'broadway shows', 'shopping'] WHERE id = 5;
+
+UPDATE Tour SET images_url = ARRAY['rome1.jpg', 'rome2.jpg', 'rome3.jpg'] WHERE id = 1;
+UPDATE Tour SET images_url = ARRAY['paris1.jpg', 'paris2.jpg', 'paris3.jpg'] WHERE id = 2;
+UPDATE Tour SET images_url = ARRAY['barcelona1.jpg', 'barcelona2.jpg', 'barcelona3.jpg'] WHERE id = 3;

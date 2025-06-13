@@ -1,10 +1,15 @@
 package com.tour_web_app.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.UUID;
-
+import java.time.LocalDate;
+import java.util.List;
 
 @Setter
 @Getter
@@ -12,43 +17,42 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "t_tours")
-
+@Table(name = "Tour")
 public class Tour {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID ID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name="COUNTRY")
+    private String name;
     private String country;
-
-    @Column(name="CITY")
     private String city;
 
-    @Column(name="CHECK_IN_DATE")
-    private String checkInDate;
+    @Column(name="check_in_date")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
+    private LocalDate checkInDate;
 
-    @Column(name="CHECK_OUT_DATE")
-    private String checkOutDate;
+    @Column(name="check_out_date")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
+    private LocalDate checkOutDate;
 
-    @Column(name="FOOD_TYPE")
-    private String foodType;
+    private int duration;
+    @Column(name = "max_capacity")
+    private int maxCapacity;
 
-    @Column(name="PRICE")
+    @Column(name = "available_spots")
+    private int availableSpots;
     private double price;
-
-    @Column(name="HOTEL")
     private String hotel;
+    private int rating;
+    private String description;
 
-    @Column(name="STARS")
-    private byte stars;
+    @Column(name = "activities", columnDefinition = "text[]")
+    private String[] activities;
 
-    @Column(name="DEPARTURE_THERE_DATE")
-    private String departureThereDate;
-
-    @Column(name="DEPARTURE_BACK_DATE")
-    private String departureBackDate;
-
-
+    @Column(name = "images_url", columnDefinition = "text[]")
+    private String[] imagesUrl;
 }

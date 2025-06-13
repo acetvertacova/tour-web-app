@@ -10,8 +10,5 @@
         <module name="tour-web-app" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="tour-web-app" target="23" />
-    </bytecodeTargetLevel>
   </component>
 </project>

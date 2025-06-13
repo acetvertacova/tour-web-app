@@ -1,43 +1,78 @@
 package com.tour_web_app.controller;
 
 import com.tour_web_app.entity.Tour;
+import com.tour_web_app.repository.TourRepository;
 import com.tour_web_app.service.TourService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.tour_web_app.specification.TourSpecification;
+import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
+@CrossOrigin
 @RestController
 @RequestMapping("tourApi")
+@AllArgsConstructor
 public class TourController {
-
-
     private final TourService tourService;
-
-    public TourController(TourService tourService) {
-        this.tourService = tourService;
-    }
-
-
-    @PostMapping("/tours")
-    public Tour saveTour(@RequestBody Tour tour){
-        return tourService.saveTour(tour);
-    }
+    private final TourRepository tourRepository;
 
     @GetMapping("/tours")
-    public List<Tour> tours() {
-        return tourService.fetchTourList();
+    public List<Tour> getAll() {
+        return tourService.getAll();
     }
 
-    @PutMapping("/tours/{id}")
-    public Tour updateTour(@RequestBody Tour tour, @PathVariable("id") UUID tourId){
-        return tourService.updateTour(tour, tourId);
+    @GetMapping("/tour/{id}")
+    public Tour getById(@PathVariable("id") long id) {
+        return tourService.getTourById(id);
     }
 
-    @DeleteMapping("/tours/{id}")
-    public Tour deleteTour(@PathVariable("id") UUID tourId){
-        return tourService.deleteTourById(tourId);
+    @GetMapping("/nocache/{id}")
+    public Tour getTourWithoutCache(@PathVariable("id") Long id) {
+        return tourService.findTourById(id);
+    }
+
+
+//    @GetMapping("/tours/country/{country}")
+//    public List<Tour> getByCountry(@PathVariable("country") String country) {
+//        return tourService.searchByCountry(country);
+//    }
+
+    @PostMapping("/tour")
+    public Tour create(@RequestBody Tour tour) {
+        return tourService.create(tour);
+    }
+
+    @PutMapping("/tour/{id}")
+    public Tour update(@RequestBody Tour tour, @PathVariable("id") long id) {
+        return tourService.update(tour, id);
+    }
+
+    @DeleteMapping("/tour/{id}")
+    public void deleteById(@PathVariable("id") long id) {
+        tourService.deleteById(id);
+    }
+
+    @GetMapping("/search")
+    public List<Tour> searchTours( @RequestParam(value = "country", required = false) String country,
+                                   @RequestParam(value = "priceFrom", required = false) String priceFrom,
+                                   @RequestParam(value = "priceTo", required = false) String priceTo,
+                                   @RequestParam(value = "rating", required = false) Integer rating,
+                                   @RequestParam(value = "availableSpots", required = false) Integer availableSpots,
+                                   @RequestParam(value = "dateFrom", required = false) LocalDate dateFrom,
+                                   @RequestParam(value = "dateTo", required = false) LocalDate dateTo){
+        Specification<Tour> spec = Specification.where(null);
+
+        if(country != null) spec = spec.and(TourSpecification.hasCountry(country));
+        if (priceFrom != null) spec = spec.and(TourSpecification.minPrice(priceFrom));
+        if (priceTo != null) spec = spec.and(TourSpecification.maxPrice(priceTo));
+        if(rating != null) spec = spec.and(TourSpecification.hasRating(rating));
+        if(availableSpots != null) spec = spec.and(TourSpecification.hasAvailableSpots(availableSpots));
+        if(dateFrom != null && dateTo != null) spec = spec.and(TourSpecification.datesBetween(dateFrom, dateTo));
+
+        return tourRepository.findAll(spec);
     }
 }
 

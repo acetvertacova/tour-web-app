@@ -18,7 +18,7 @@ import java.time.Duration;
 @Setter
 @Configuration
 @ConfigurationProperties(prefix = "spring.cache.redis")
-public class Redis {
+public class RedisConfig {
 
     private Duration timeToLive = Duration.ofSeconds(10);
 

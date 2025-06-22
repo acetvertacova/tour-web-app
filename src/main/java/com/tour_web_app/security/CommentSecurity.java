@@ -1,4 +1,4 @@
-package com.tour_web_app.config;
+package com.tour_web_app.security;
 
 import com.tour_web_app.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;

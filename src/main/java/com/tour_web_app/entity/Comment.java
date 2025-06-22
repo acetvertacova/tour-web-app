@@ -1,6 +1,5 @@
 package com.tour_web_app.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -25,7 +24,7 @@ public class Comment {
     @ManyToOne
     @JoinColumn(name = "user_id")
     @JsonIgnore
-    private User user;
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "tour_id")

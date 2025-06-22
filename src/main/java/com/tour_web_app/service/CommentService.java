@@ -1,7 +1,7 @@
 package com.tour_web_app.service;
 
 import com.tour_web_app.Dto.CommentDto;
-import com.tour_web_app.Dto.Mapper;
+import com.tour_web_app.Dto.CommentMapper;
 import com.tour_web_app.entity.Comment;
 import com.tour_web_app.repository.CommentRepository;
 import com.tour_web_app.repository.TourRepository;
@@ -21,19 +21,19 @@ public class CommentService {
     public List<CommentDto> getAllByTourId(Long tourId) {
         List<Comment> comments = commentRepository.findByTourId(tourId);
         return comments.stream()
-                .map(Mapper::commentToDto)
+                .map(CommentMapper::commentToDto)
                 .toList();
     }
 
     public CommentDto create(CommentDto commentDto) {
         Comment comment = Comment.builder()
                 .content(commentDto.getContent())
-                .user(userRepository.findByUsername(commentDto.getUsername()))
+                .user(userRepository.findByUsername(commentDto.getUsername()).orElseThrow(() -> new RuntimeException("User not found")))
                 .tour(tourRepository.findById(commentDto.getTourId())
                         .orElseThrow(() -> new RuntimeException("Tour not found")))
                 .build();
         commentRepository.save(comment);
-        return Mapper.commentToDto(comment);
+        return CommentMapper.commentToDto(comment);
     }
 
     public CommentDto update(CommentDto commentDto, Long id){
@@ -42,7 +42,7 @@ public class CommentService {
 
         commentToUpdate.setContent(commentDto.getContent());
         commentRepository.save(commentToUpdate);
-        return Mapper.commentToDto(commentToUpdate);
+        return CommentMapper.commentToDto(commentToUpdate);
     }
 
     public void deleteById(Long commentId){

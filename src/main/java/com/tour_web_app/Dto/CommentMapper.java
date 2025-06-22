@@ -2,7 +2,7 @@ package com.tour_web_app.Dto;
 
 import com.tour_web_app.entity.Comment;
 
-public class Mapper {
+public class CommentMapper {
     public static CommentDto commentToDto(Comment comment) {
         return CommentDto.builder()
                 .id(comment.getId())

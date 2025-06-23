@@ -15,13 +15,15 @@ public class AuthenticationService {
     private final JwtService jwtService;
 
     public AuthenticationResponseDto authenticate(final AuthenticationRequestDto request) {
-
+    //object contains the input info(username, password) for auth
         UsernamePasswordAuthenticationToken authToken = UsernamePasswordAuthenticationToken
                 .unauthenticated(request.username(), request.password());
 
+        //checks if input === data from db
         Authentication authentication = authenticationManager.authenticate(authToken);
 
-        String token = jwtService.generateToken(request.username());
+        //if success returns token
+        String token = jwtService.generateToken(authentication);
         return new AuthenticationResponseDto(token);
     }
 }

@@ -25,11 +25,12 @@ public class CommentController {
     }
 
     @PutMapping("/comments/{id}")
-    @PreAuthorize("commentSecurity.isCommentOwner(#id, authentication.name)")
+    @PreAuthorize("@commentSecurity.isCommentOwner(#id, authentication.name)")
     public CommentDto update(@RequestBody CommentDto commentDto, @PathVariable long id) {
         return commentService.update(commentDto, id);
     }
 
+    @PreAuthorize("@commentSecurity.isCommentOwner(#id, authentication.name)")
     @DeleteMapping("/comments/{id}")
     public void deleteById(@PathVariable long id){
         commentService.deleteById(id);

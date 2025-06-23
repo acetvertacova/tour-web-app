@@ -30,7 +30,7 @@ public class UserRegistrationService {
                 .email(newUser.getEmail())
                 .password(passwordEncoder.encode(newUser.getPassword())).build();
 
-        Role roles = roleRepository.findByName("ROLE_USER").get();
+        Role roles = roleRepository.findByName("USER").get();
         user.setRoles(Collections.singletonList(roles));
 
         return userRepository.save(user);

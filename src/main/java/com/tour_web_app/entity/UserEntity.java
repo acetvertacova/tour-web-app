@@ -1,9 +1,7 @@
 package com.tour_web_app.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
@@ -14,6 +12,8 @@ import java.util.List;
 @Getter
 @Entity
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "Users")
 public class UserEntity {
     @Id

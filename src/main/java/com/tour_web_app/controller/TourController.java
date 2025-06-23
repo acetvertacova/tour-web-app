@@ -6,6 +6,7 @@ import com.tour_web_app.service.TourService;
 import com.tour_web_app.specification.TourSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;

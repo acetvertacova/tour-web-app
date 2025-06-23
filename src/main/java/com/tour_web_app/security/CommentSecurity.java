@@ -2,6 +2,7 @@ package com.tour_web_app.security;
 
 import com.tour_web_app.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
@@ -15,4 +16,5 @@ public class CommentSecurity {
                 .map(comment -> comment.getUser().getUsername().equals(username))
                 .orElse(false);
     }
+
 }

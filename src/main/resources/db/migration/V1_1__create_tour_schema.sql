@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS Tour (
     city varchar(50),
     check_in_date date,
     check_out_date date,
-    duration int, --new
     max_capacity int default 20, --new
     available_spots int, --new
     price decimal,

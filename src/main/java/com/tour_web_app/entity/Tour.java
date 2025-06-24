@@ -1,7 +1,6 @@
 package com.tour_web_app.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -55,4 +54,7 @@ public class Tour {
 
     @Column(name = "images_url", columnDefinition = "text[]")
     private String[] imagesUrl;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }

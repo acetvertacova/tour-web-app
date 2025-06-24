@@ -6,6 +6,7 @@ import com.tour_web_app.service.TourService;
 import com.tour_web_app.specification.TourSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("tourApi")
+@RequestMapping("api")
 @AllArgsConstructor
 public class TourController {
     private final TourService tourService;
@@ -24,12 +25,12 @@ public class TourController {
         return tourService.getAll();
     }
 
-    @GetMapping("/tour/{id}")
+    @GetMapping("/tours/{id}")
     public Tour getById(@PathVariable("id") long id) {
         return tourService.getTourById(id);
     }
 
-    @GetMapping("/nocache/{id}")
+    @GetMapping("tours/{id}/nocache")
     public Tour getTourWithoutCache(@PathVariable("id") Long id) {
         return tourService.findTourById(id);
     }
@@ -40,22 +41,22 @@ public class TourController {
 //        return tourService.searchByCountry(country);
 //    }
 
-    @PostMapping("/tour")
+    @PostMapping("/tours")
     public Tour create(@RequestBody Tour tour) {
         return tourService.create(tour);
     }
 
-    @PutMapping("/tour/{id}")
+    @PutMapping("/tours/{id}")
     public Tour update(@RequestBody Tour tour, @PathVariable("id") long id) {
         return tourService.update(tour, id);
     }
 
-    @DeleteMapping("/tour/{id}")
+    @DeleteMapping("/tours/{id}")
     public void deleteById(@PathVariable("id") long id) {
         tourService.deleteById(id);
     }
 
-    @GetMapping("/search")
+    @GetMapping("tours/search")
     public List<Tour> searchTours( @RequestParam(value = "country", required = false) String country,
                                    @RequestParam(value = "priceFrom", required = false) String priceFrom,
                                    @RequestParam(value = "priceTo", required = false) String priceTo,

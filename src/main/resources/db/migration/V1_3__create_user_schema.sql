@@ -6,3 +6,6 @@ CREATE TABLE IF NOT EXISTS Users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO Users (username, email, password)
+VALUES ('anastasia', 'anastasia@example.com', '$2a$10$e0NRpoePXW5ZHZzNN9V8wOHpb86QxQ1p1XjRJeUm09gZzDc7t3VBe');
+

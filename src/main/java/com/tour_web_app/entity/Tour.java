@@ -39,6 +39,7 @@ public class Tour {
     private LocalDate checkOutDate;
 
     private int duration;
+
     @Column(name = "max_capacity")
     private int maxCapacity;
 

@@ -36,6 +36,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/tours/**").hasAuthority("SCOPE_ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/tours/**").hasAuthority("SCOPE_ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/tours/**").hasAuthority("SCOPE_ADMIN")
+                        .requestMatchers("/api/bookings").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/comments/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))

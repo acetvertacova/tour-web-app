@@ -1,17 +1,15 @@
 package com.tour_web_app.controller;
 
-import com.tour_web_app.Dto.RegistrationRequestDto;
-import com.tour_web_app.Dto.RegistrationResponseDto;
-import com.tour_web_app.Dto.UserRegistrationMapper;
+import com.tour_web_app.dto.RegistrationRequestDto;
+import com.tour_web_app.dto.RegistrationResponseDto;
+import com.tour_web_app.dto.UserRegistrationMapper;
 import com.tour_web_app.entity.UserEntity;
 import com.tour_web_app.service.UserRegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor

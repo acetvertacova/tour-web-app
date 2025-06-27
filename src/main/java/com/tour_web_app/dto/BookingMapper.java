@@ -1,4 +1,4 @@
-package com.tour_web_app.Dto;
+package com.tour_web_app.dto;
 
 import com.tour_web_app.entity.*;
 

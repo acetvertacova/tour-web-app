@@ -38,8 +38,6 @@ public class Tour {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MMM-yyyy")
     private LocalDate checkOutDate;
 
-    private int duration;
-
     @Column(name = "max_capacity")
     private int maxCapacity;
 

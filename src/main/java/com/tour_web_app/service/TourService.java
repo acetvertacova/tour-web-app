@@ -3,6 +3,7 @@ package com.tour_web_app.service;
 import com.tour_web_app.entity.Tour;
 import com.tour_web_app.repository.TourCacheRepository;
 import com.tour_web_app.repository.TourRepository;
+import jakarta.validation.ValidationException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,20 +30,24 @@ public class TourService {
         if (cachedTour != null) {
             return cachedTour;
         }
-        Tour dbTour = tourRepository.findById(id).orElseThrow(() -> new RuntimeException("Tour not found"));
+        Tour dbTour = tourRepository.findById(id).orElseThrow(() -> new ValidationException("Tour not found"));
         tourCacheRepository.save(dbTour);
         return dbTour;
     }
 
     public Tour findTourById(Long id) {
-        return tourRepository.findById(id).orElseThrow(() -> new RuntimeException("Tour not found"));
+        return tourRepository.findById(id).orElseThrow(() -> new ValidationException("Tour not found"));
     }
 
     public Tour create(Tour tour) {
         Optional<Tour> existingTour = tourRepository.findByCheckInDateAndCheckOutDateAndCountry(tour.getCheckInDate(), tour.getCheckOutDate(), tour.getCountry());
 
         if (existingTour.isPresent()) {
-            throw new IllegalArgumentException("Tour with the same date and destination has been already created!");
+            throw new ValidationException("Tour with the same date and destination has been already created!");
+        }
+
+        if (tour.getMaxCapacity() < tour.getAvailableSpots()) {
+            throw new ValidationException("Max capacity cannot be less than available spots.");
         }
 
         Tour dbTour = tourRepository.save(tour);
@@ -51,14 +56,13 @@ public class TourService {
     }
 
     public Tour update(Tour tour, long id) {
-        Tour tourToUpdate = tourRepository.findById(id).orElseThrow(() -> new RuntimeException("Tour not found"));
+        Tour tourToUpdate = tourRepository.findById(id).orElseThrow(() -> new ValidationException("Tour not found"));
 
         Tour updatedTour = tour.builder()
                 .id(tourToUpdate.getId())
                 .name(tour.getName())
                 .country(tour.getCountry())
                 .city(tour.getCity())
-                .duration(tour.getDuration())
                 .maxCapacity(tour.getMaxCapacity())
                 .availableSpots(tour.getAvailableSpots())
                 .checkInDate(tour.getCheckInDate())
@@ -79,10 +83,6 @@ public class TourService {
 
         return saved;
     }
-
-//    public List<Tour> searchByCountry(String country){
-//        return tourRepository.findByCountryContainingIgnoreCase(country);
-//    }
 
     public void deleteById(long id) {
         // Invalidate cache on delete

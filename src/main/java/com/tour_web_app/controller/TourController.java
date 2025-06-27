@@ -6,13 +6,12 @@ import com.tour_web_app.service.TourService;
 import com.tour_web_app.specification.TourSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin
+@CrossOrigin()
 @RestController
 @RequestMapping("api")
 @AllArgsConstructor
@@ -34,12 +33,6 @@ public class TourController {
     public Tour getTourWithoutCache(@PathVariable("id") Long id) {
         return tourService.findTourById(id);
     }
-
-
-//    @GetMapping("/tours/country/{country}")
-//    public List<Tour> getByCountry(@PathVariable("country") String country) {
-//        return tourService.searchByCountry(country);
-//    }
 
     @PostMapping("/tours")
     public Tour create(@RequestBody Tour tour) {

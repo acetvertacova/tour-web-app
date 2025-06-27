@@ -1,6 +1,6 @@
 package com.tour_web_app.controller;
 
-import com.tour_web_app.Dto.CommentDto;
+import com.tour_web_app.dto.CommentDto;
 import com.tour_web_app.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api")
 @AllArgsConstructor

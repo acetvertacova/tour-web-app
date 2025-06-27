@@ -1,7 +1,6 @@
-package com.tour_web_app.Dto;
+package com.tour_web_app.dto;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
 

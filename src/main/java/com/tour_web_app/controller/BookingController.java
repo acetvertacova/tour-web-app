@@ -1,7 +1,7 @@
 package com.tour_web_app.controller;
 
-import com.tour_web_app.Dto.BookingRequestDto;
-import com.tour_web_app.Dto.BookingResponseDto;
+import com.tour_web_app.dto.BookingRequestDto;
+import com.tour_web_app.dto.BookingResponseDto;
 import com.tour_web_app.service.BookingService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("api/bookings")
 @AllArgsConstructor

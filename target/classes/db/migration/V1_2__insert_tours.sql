@@ -16,7 +16,20 @@ UPDATE Tour SET activities = ARRAY['museums', 'city tours', 'shopping'] WHERE id
 UPDATE Tour SET activities = ARRAY['beach', 'architecture', 'nightlife'] WHERE id = 3;
 UPDATE Tour SET activities = ARRAY['temples', 'sushi tours', 'shopping'] WHERE id = 4;
 UPDATE Tour SET activities = ARRAY['landmarks', 'broadway shows', 'shopping'] WHERE id = 5;
+UPDATE Tour SET activities = ARRAY['ancient ruins', 'history walks', 'local cuisine'] WHERE id = 6;
+UPDATE Tour SET activities = ARRAY['museums', 'historical landmarks', 'art galleries'] WHERE id = 7;
+UPDATE Tour SET activities = ARRAY['street food', 'markets', 'temples'] WHERE id = 8;
+UPDATE Tour SET activities = ARRAY['beaches', 'statue tour', 'samba nights'] WHERE id = 9;
+UPDATE Tour SET activities = ARRAY['harbor cruise', 'opera house', 'beach walks'] WHERE id = 10;
 
-UPDATE Tour SET images_url = ARRAY['rome1.jpg', 'rome2.jpg', 'rome3.jpg'] WHERE id = 1;
+
+UPDATE Tour SET images_url = ARRAY['https://plus.unsplash.com/premium_photo-1675975706513-9daba0ec12a8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1529154036614-a60975f5c760?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://plus.unsplash.com/premium_photo-1661964123160-8d049fa07f0c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'] WHERE id = 1;
 UPDATE Tour SET images_url = ARRAY['paris1.jpg', 'paris2.jpg', 'paris3.jpg'] WHERE id = 2;
 UPDATE Tour SET images_url = ARRAY['barcelona1.jpg', 'barcelona2.jpg', 'barcelona3.jpg'] WHERE id = 3;
+UPDATE Tour SET images_url = ARRAY['tokyo1.jpg', 'tokyo2.jpg', 'tokyo3.jpg'] WHERE id = 4;
+UPDATE Tour SET images_url = ARRAY['ny1.jpg', 'ny2.jpg', 'ny3.jpg'] WHERE id = 5;
+UPDATE Tour SET images_url = ARRAY['athens1.jpg', 'athens2.jpg', 'athens3.jpg'] WHERE id = 6;
+UPDATE Tour SET images_url = ARRAY['berlin1.jpg', 'berlin2.jpg', 'berlin3.jpg'] WHERE id = 7;
+UPDATE Tour SET images_url = ARRAY['bangkok1.jpg', 'bangkok2.jpg', 'bangkok3.jpg'] WHERE id = 8;
+UPDATE Tour SET images_url = ARRAY['rio1.jpg', 'rio2.jpg', 'rio3.jpg'] WHERE id = 9;
+UPDATE Tour SET images_url = ARRAY['sydney1.jpg', 'sydney2.jpg', 'sydney3.jpg'] WHERE id = 10;

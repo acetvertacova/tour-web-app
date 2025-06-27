@@ -1,13 +1,15 @@
 package com.tour_web_app.service;
 
-import com.tour_web_app.Dto.CommentDto;
-import com.tour_web_app.Dto.CommentMapper;
+import com.tour_web_app.dto.CommentDto;
+import com.tour_web_app.dto.CommentMapper;
 import com.tour_web_app.entity.Comment;
 import com.tour_web_app.repository.CommentRepository;
 import com.tour_web_app.repository.TourRepository;
 import com.tour_web_app.repository.UserRepository;
+import jakarta.validation.ValidationException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -26,11 +28,15 @@ public class CommentService {
     }
 
     public CommentDto create(CommentDto commentDto) {
+        if (!StringUtils.hasText(commentDto.getContent())) {
+            throw new ValidationException("Comment content must not be empty");
+        }
+
         Comment comment = Comment.builder()
                 .content(commentDto.getContent())
-                .user(userRepository.findByUsername(commentDto.getUsername()).orElseThrow(() -> new RuntimeException("User not found")))
+                .user(userRepository.findByUsername(commentDto.getUsername()).orElseThrow(() -> new ValidationException("User not found")))
                 .tour(tourRepository.findById(commentDto.getTourId())
-                        .orElseThrow(() -> new RuntimeException("Tour not found")))
+                        .orElseThrow(() -> new ValidationException("Tour not found")))
                 .build();
         commentRepository.save(comment);
         return CommentMapper.commentToDto(comment);
@@ -38,7 +44,7 @@ public class CommentService {
 
     public CommentDto update(CommentDto commentDto, Long id){
         Comment commentToUpdate = commentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Comment is not found"));
+                .orElseThrow(() -> new ValidationException("Comment is not found"));
 
         commentToUpdate.setContent(commentDto.getContent());
         commentRepository.save(commentToUpdate);

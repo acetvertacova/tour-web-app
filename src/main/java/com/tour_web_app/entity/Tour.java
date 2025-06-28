@@ -48,9 +48,6 @@ public class Tour {
     private int rating;
     private String description;
 
-    @Column(name = "activities", columnDefinition = "text[]")
-    private String[] activities;
-
     @Column(name = "images_url", columnDefinition = "text[]")
     private String[] imagesUrl;
 

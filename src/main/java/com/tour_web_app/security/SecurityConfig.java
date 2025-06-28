@@ -64,8 +64,8 @@ public class SecurityConfig {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of("http://localhost:5173")); // адрес фронтенда
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        config.setAllowedHeaders(List.of("*")); // можно сузить список по необходимости
-        config.setAllowCredentials(true);      // чтобы куки и заголовки авторизации пропускать
+        config.setAllowedHeaders(List.of("*"));
+        config.setAllowCredentials(true);      // to pass cookies and headers
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);

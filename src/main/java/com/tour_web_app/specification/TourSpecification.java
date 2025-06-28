@@ -8,13 +8,11 @@ import java.time.LocalDate;
 public class TourSpecification {
     public static Specification<Tour> hasCountry(String country) {
         return (root, query, criteriaBuilder) ->
-                criteriaBuilder.equal(root.get("country"), country);
+                criteriaBuilder.equal(
+                        criteriaBuilder.lower(root.get("country")),
+                        country.toLowerCase()
+                );
     }
-
-//    public static Specification<Tour> priceBetween(String minPrice, String maxPrice) {
-//        return (root, query, criteriaBuilder) ->
-//                criteriaBuilder.between(root.get("price"), minPrice, maxPrice);
-//    }
 
     public static Specification<Tour> minPrice(String minPrice) {
         return (root, query, criteriaBuilder) ->

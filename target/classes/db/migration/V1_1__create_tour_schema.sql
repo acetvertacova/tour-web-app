@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS Tour (
     hotel varchar(50),
     rating int,
     description text,
-    activities text[], --new
     images_url text[] --new
 );
 

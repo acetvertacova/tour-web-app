@@ -71,7 +71,6 @@ public class TourService {
                 .hotel(tour.getHotel())
                 .rating(tour.getRating())
                 .description(tour.getDescription())
-                .activities(tour.getActivities())
                 .imagesUrl(tour.getImagesUrl())
                 .build();
         Tour saved = tourRepository.save(updatedTour);

@@ -11,18 +11,6 @@ VALUES
 ('Rio Beach Paradise', 'Brazil', 'Rio de Janeiro', '2026-01-15', '2026-01-22', 24, 20, 1600.00, 'Copacabana Inn', 4, 'Relax on world-famous beaches and visit Christ the Redeemer.'),
 ('Sydney Harbor Experience', 'Australia', 'Sydney', '2026-02-10', '2026-02-18', 12, 5, 2500.00, 'Harbour View Hotel', 5, 'See the Opera House, Bondi Beach, and go on a harbor cruise.');
 
-UPDATE Tour SET activities = ARRAY['sightseeing', 'cultural tours', 'food tours'] WHERE id = 1;
-UPDATE Tour SET activities = ARRAY['museums', 'city tours', 'shopping'] WHERE id = 2;
-UPDATE Tour SET activities = ARRAY['beach', 'architecture', 'nightlife'] WHERE id = 3;
-UPDATE Tour SET activities = ARRAY['temples', 'sushi tours', 'shopping'] WHERE id = 4;
-UPDATE Tour SET activities = ARRAY['landmarks', 'broadway shows', 'shopping'] WHERE id = 5;
-UPDATE Tour SET activities = ARRAY['ancient ruins', 'history walks', 'local cuisine'] WHERE id = 6;
-UPDATE Tour SET activities = ARRAY['museums', 'historical landmarks', 'art galleries'] WHERE id = 7;
-UPDATE Tour SET activities = ARRAY['street food', 'markets', 'temples'] WHERE id = 8;
-UPDATE Tour SET activities = ARRAY['beaches', 'statue tour', 'samba nights'] WHERE id = 9;
-UPDATE Tour SET activities = ARRAY['harbor cruise', 'opera house', 'beach walks'] WHERE id = 10;
-
-
 UPDATE Tour SET images_url = ARRAY['https://plus.unsplash.com/premium_photo-1675975706513-9daba0ec12a8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://images.unsplash.com/photo-1529154036614-a60975f5c760?q=80&w=1176&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', 'https://plus.unsplash.com/premium_photo-1661964123160-8d049fa07f0c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'] WHERE id = 1;
 UPDATE Tour SET images_url = ARRAY['paris1.jpg', 'paris2.jpg', 'paris3.jpg'] WHERE id = 2;
 UPDATE Tour SET images_url = ARRAY['barcelona1.jpg', 'barcelona2.jpg', 'barcelona3.jpg'] WHERE id = 3;

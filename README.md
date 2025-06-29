@@ -1,6 +1,7 @@
 # tour-web-app
 
-*Generate RSA Keys for JWT*
+**Generate RSA Keys for JWT**
+
 You can generate them using OpenSSL. We will put them in the src/main/resources/jwt folder.
 
 ```java

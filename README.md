@@ -9,3 +9,12 @@ cd src/main/resources/jwt
 openssl genpkey -algorithm RSA -out app.key -outform PEM
 openssl rsa -pubout -in app.key -out app.pub
 ```
+
+**And add the keys to the application.yaml:**
+
+```java
+jwt:
+  private-key: classpath:jwt/app.key
+  public-key: classpath:jwt/app.pub
+  ttl: 15m
+```
